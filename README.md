@@ -1,8 +1,17 @@
 # Brendly za Claude
 
-**Vodi svoju Brendly prodavnicu razgovorom.** Kažeš Claude-u šta želiš, a on to uradi u tvojoj
-prodavnici: napravi proizvode od dizajna, sredi boje i cene, napiše opise, uredi izlog i pročita
-brojke. Svaki korak ti potvrdi, a sve veće izmene tek uz tvoje odobrenje.
+**Od ideje do prodavnice, u jednom razgovoru.** Kažeš Claude-u šta želiš, a on to uradi u tvom
+Brendly nalogu: osmisli kolekciju, napravi proizvode, otvori prodavnice, uredi izlog i sve pripremi
+za prodaju. Svaki korak ti potvrdi, a sve veće izmene radi tek uz tvoje odobrenje.
+
+```text
+„Napravi mi brend na temu horoskopa: po jedan dizajn za svaki od 12 znakova, na majicama i
+duksevima u bojama koje pristaju svakom znaku. Otvori prodavnice za Srbiju, Hrvatsku, Bosnu i
+Hercegovinu i EU, sa opisima na jeziku tržišta, kategorijama po elementima i sređenim izlogom,
+i objavi sve tako da mogu da primam porudžbine."
+```
+
+A svakodnevno, nad postojećim katalogom:
 
 ```text
 „Evo 20 dizajna iz foldera, napravi po jednu majicu za svaki i objavi ih."
@@ -23,9 +32,9 @@ brojke. Svaki korak ti potvrdi, a sve veće izmene tek uz tvoje odobrenje.
 - [Šta dobijaš](#šta-dobijaš)
 - [Instalacija](#instalacija)
 - [Prvi razgovor](#prvi-razgovor)
+- [Od ideje do prodavnice](#od-ideje-do-prodavnice)
 - [Mogućnosti](#mogućnosti)
 - [Kako Claude radi sa tvojom prodavnicom](#kako-claude-radi-sa-tvojom-prodavnicom)
-- [Šta plugin ne radi](#šta-plugin-ne-radi)
 - [Povratna informacija](#povratna-informacija)
 - [Ažuriranje i uklanjanje](#ažuriranje-i-uklanjanje)
 - [Česta pitanja](#česta-pitanja)
@@ -84,6 +93,31 @@ Posle svakog posla Claude ti kaže šta je uradio, šta je bilo pre a šta je sa
 vidiš i šta, ako išta, nije uspelo.
 
 ---
+
+## Od ideje do prodavnice
+
+Najveća vrednost plugina je u tome što Claude ceo put od teme do prodavnice spremne za
+porudžbine prođe sam, a ti odobravaš ključne korake.
+
+```text
+„Napravi mi brend na temu horoskopa za sva četiri tržišta i pripremi ga za prodaju."
+```
+
+Šta Claude tada radi, redom:
+
+1. **Osmisli kolekciju.** Predloži ime brenda, stil, dvanaest motiva i koje tipove proizvoda i
+   boje ima smisla koristiti, i pita te pre nego što išta napravi.
+2. **Otvori prodavnice.** Po jednu na svakom tržištu koje izabereš, sa imenom, opisom, SEO poljima
+   i jezikom tržišta.
+3. **Napravi proizvode.** Dizajne ubaci u galeriju i od njih napravi proizvode u serijama do 200
+   odjednom, sa nazivima, opisima i maržama za svaku prodavnicu.
+4. **Složi katalog.** Kategorije, glavne boje i redosled, isto na svim tržištima.
+5. **Uredi izlog.** Boje i pismo u duhu brenda, logo, naslovna sekcija i istaknuti proizvodi.
+6. **Objavi i proveri.** Objavi proizvode i prodavnice, pa za svaku proveri da li je spremna da
+   prima porudžbine. Ako nešto mora da završiš sam u platformi, kaže ti tačno šta i gde.
+
+Na kraju dobijaš pregled: koje prodavnice postoje, koliko proizvoda je u svakoj, adrese izloga i
+šta je, ako išta, ostalo da se uradi.
 
 ## Mogućnosti
 
@@ -242,16 +276,6 @@ Stanje za isplatu, istorija i zahtev za isplatu. Kod isplate na račun firme Cla
 - **Tema ima rezervnu kopiju.** Pre svake izmene izgleda pravi se snimak, pa se uvek možeš vratiti.
 - **Isti pristup kao u platformi.** Claude vidi i menja tačno ono što i ti možeš u svom nalogu,
   ništa više.
-
-## Šta plugin ne radi
-
-- **Plaćanja i podaci za naplatu:** unos kartice, uključivanje načina plaćanja, povezivanje
-  Stripe-a i PayPal-a. To završavaš u platformi, a Claude ti kaže šta tačno fali i gde.
-- **Stanje porudžbina:** porudžbine se ne prihvataju i ne otkazuju kroz Claude.
-- **Funkcije koje platforma nema:** na primer raspored na strani proizvoda ili kod koji važi
-  jednom po kupcu. Claude ti to kaže otvoreno i predloži najbliže što postoji.
-- **Zakazani poslovi:** Claude ne radi sam od sebe u pozadini, na primer „šalji mi izveštaj
-  svakog ponedeljka". Radi kad ga pitaš.
 
 ## Povratna informacija
 
