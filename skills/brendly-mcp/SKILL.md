@@ -63,6 +63,11 @@ pokazao šta bi se desilo. Nikad ne šaljem oba poziva zaredom „da uštedim ko
 
 ## Slike: nikad ne teraj čoveka da radi posao koji možeš sam
 
+Pre nego što bilo koji dizajn ubaciš, mora biti spreman za štampu: bez pozadine i najmanje 150 DPI
+na stvarnoj veličini otiska. Ko pravi dizajn, kako se traži od modela i kako se priprema piše u
+skillu `brendly-katalog`, odeljak „Dizajni".
+
+
 Redosled biranja, od najboljeg:
 
 | Situacija | Akcija |

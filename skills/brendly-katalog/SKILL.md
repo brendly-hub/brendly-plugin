@@ -1,6 +1,6 @@
 ---
 name: brendly-katalog
-description: Rad sa Brendly katalogom preko MCP-a - kreiranje proizvoda od dizajna, tipovi proizvoda, boje, veličine, cene i cenovne grupe, kategorije, objava, mockup slike i galerija dizajna. Koristi za "napravi proizvode", "dodaj dizajn na majicu", "podigni cene", "objavi proizvode", "dodaj kategoriju", "koje boje ima ovaj tip", "koliko ima zaliha", "obriši proizvode".
+description: Rad sa Brendly katalogom preko MCP-a - pravljenje i priprema dizajna za štampu, kreiranje proizvoda od dizajna, tipovi proizvoda, boje, veličine, cene i cenovne grupe, kategorije, objava, mockup slike i galerija dizajna. Koristi za "napravi dizajn", "napravi kolekciju", "napravi proizvode", "dodaj dizajn na majicu", "ovaj dizajn je mutan", "podigni cene", "objavi proizvode", "dodaj kategoriju", "koje boje ima ovaj tip", "koliko ima zaliha", "obriši proizvode".
 ---
 
 # Brendly: katalog
@@ -43,6 +43,53 @@ backend izvodi sam iz tipa proizvoda - ne šaljem ih osim ako korisnik traži dr
 
 Posle posla proverim rezultat: `action:"preview"` vrati mockup **kao sliku** u odgovoru
 (oko 1.500 tokena), pa vidim da li dizajn stoji kako treba.
+
+## Dizajni: odakle dolaze i kako se pripremaju za štampu
+
+Proizvod je dobar koliko i fajl koji ode u štampu. Zato dizajn pre ubacivanja u galeriju mora da
+bude **spreman za štampu**, a to se radi bez smaranja korisnika.
+
+### Ko pravi dizajn
+
+Claude ne ume sam da nacrta rastersku sliku. Kad korisnik traži da se dizajn napravi:
+
+| Vrsta dizajna | Put |
+|---|---|
+| tipografija, natpisi, simboli, linijski crteži, geometrija | nacrtaj **vektorski** (SVG), pa ga pretvori u PNG u punoj rezoluciji zone štampe, sa providnom pozadinom. Ne traži nikakav dodatni nalog i uvek je oštro |
+| ilustracija, slikani ili fotorealistični motiv, složen crtež | **ponudi korisniku da poveže alat za slike po svom izboru** (Higgsfield, ChatGPT, Gemini ili drugi). Generisanje je o njegovom trošku, pa alat bira on. Ako je već povezan, koristi ga |
+
+### Kako tražiš sliku od modela
+
+- Samo motiv, izolovan. Nikad majica, mokap, lutka ni scena: to na otisku nema šta da traži.
+- Bez pozadine, i to ne opisuj u promptu kao „na beloj podlozi".
+- Najveća rezolucija koju alat daje, u odnosu stranica zone štampe (za majicu uspravno, 3:4).
+- **OpenAI (ChatGPT, gpt-image):** traži providnu pozadinu i PNG. Ako prompt opiše pozadinu ili
+  scenu, providnost se gubi. Veličina mora biti deljiva sa 16, a odnos stranica između 1:3 i 3:1.
+- **Gemini:** ne ume providnu pozadinu. Napravi isti motiv jednom na čisto beloj, a jednom na
+  čisto crnoj podlozi, pa iz razlike izračunaj stvarnu providnost; to daje čiste ivice i kod
+  poluprovidnih delova. Druga mogućnost je jednobojna zelena podloga koja se posle ukloni.
+- **Higgsfield:** ima i uklanjanje pozadine i uvećanje; koristi ih u pripremi.
+
+### Priprema pre ubacivanja
+
+Pročitaj zonu štampe iz `brendly_catalog product_type` (`referentnaZonaMm` i
+`recommendedFileOptions`), pa:
+
+1. **Izmeri.** Idealno je 300 DPI na stvarnoj veličini otiska: širina u pikselima = širina u mm
+   / 25,4 × 300 (majica sa zonom od 271 mm: oko 3.200 px). **Ispod 150 DPI dizajn nije za štampu**,
+   jer se tada golim okom vide stepenice.
+2. **Uvećaj ako treba**, vernim uvećanjem, ne kreativnim: kreativno uvećanje dodaje detalje kojih
+   nije bilo i menja dizajn. Uvećanje ide pre uklanjanja pozadine, jer model na većoj slici daje
+   čistije ivice.
+3. **Ukloni pozadinu** ako slika nema providnost. Puna bela pozadina se na tamnoj majici odštampa
+   kao beli pravougaonik.
+4. **Očisti ivice**: bela aura oko motiva, jedva vidljivi pikseli, prazne margine.
+5. **Proveri ponovo** veličinu i providnost, pa tek onda ubaci u galeriju.
+
+Korisniku javi samo ishod, jednom rečenicom („dizajn je uvećan i uklonjena mu je pozadina").
+Pitaj ga samo kada priprema nije moguća: na primer kada povezani alat nema uvećanje, a slika je
+ispod 150 DPI. Tada mu to reci otvoreno i ponudi da poveže alat koji ima uvećanje; ne pravi
+proizvod od dizajna koji nije za štampu.
 
 ## Cene
 
