@@ -9,5 +9,6 @@
       "source": "./",
       "description": "Brendly platforma kroz Claude: prodavnice, katalog i proizvodi, izgled izloga, porudzbine, popusti i isplate. MCP server plus uputstva koja agentu objasnjavaju kako se sta radi."
     }
-  ]
+  ],
+  "description": "Brendly za Claude: upravljanje Brendly prodavnicom razgovorom."
 }
