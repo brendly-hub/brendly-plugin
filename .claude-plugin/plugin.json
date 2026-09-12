@@ -1,0 +1,9 @@
+{
+  "name": "brendly",
+  "description": "Brendly platforma kroz Claude: prodavnice, katalog i proizvodi, izgled izloga, porudzbine, popusti i isplate. MCP server plus uputstva koja agentu objasnjavaju kako se sta radi.",
+  "version": "1.0.0-beta.1",
+  "author": {
+    "name": "Brendly"
+  },
+  "homepage": "https://mcp.brendly.rs"
+}

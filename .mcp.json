@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "brendly": {
+      "type": "http",
+      "url": "https://mcp.brendly.rs/mcp"
+    }
+  }
+}
