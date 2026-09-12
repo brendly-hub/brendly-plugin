@@ -51,12 +51,43 @@ bude **spreman za štampu**, a to se radi bez smaranja korisnika.
 
 ### Ko pravi dizajn
 
-Claude ne ume sam da nacrta rastersku sliku. Kad korisnik traži da se dizajn napravi:
+Claude ne ume sam da nacrta rastersku sliku, a najbolji dizajni danas nastaju u modelima za slike.
+Zato je redosled uvek isti.
 
-| Vrsta dizajna | Put |
-|---|---|
-| tipografija, natpisi, simboli, linijski crteži, geometrija | nacrtaj **vektorski** (SVG), pa ga pretvori u PNG u punoj rezoluciji zone štampe, sa providnom pozadinom. Ne traži nikakav dodatni nalog i uvek je oštro |
-| ilustracija, slikani ili fotorealistični motiv, složen crtež | **ponudi korisniku da poveže alat za slike po svom izboru** (Higgsfield, ChatGPT, Gemini ili drugi). Generisanje je o njegovom trošku, pa alat bira on. Ako je već povezan, koristi ga |
+**1. Prvo ponudi povezivanje sa modelom za slike.** Kratko, sa uputstvom i uz ohrabrenje da ćeš
+ti voditi ceo posao. Na primer:
+
+> Za dobre dizajne najbolje je da povežeš alat za generisanje slika, a ja preuzimam ostalo:
+> pišem opise za model, biram najbolje, pripremam fajl za štampu i pravim proizvode. Generisanje
+> ide preko tvog naloga u tom alatu, pa trošak zavisi od njega.
+>
+> - **Higgsfield** je najjednostavniji: jedan klik, prijava svojim nalogom, bez ključeva. U njemu
+>   su i GPT Image i Nano Banana (Gemini), plus uvećanje i uklanjanje pozadine.
+>   U Claude-u: Podešavanja, Konektori, dodaj Higgsfield.
+> - **ChatGPT ili Gemini** direktno: napravi sliku u njihovoj aplikaciji i pošalji mi je, ili, ako
+>   imaš API ključ, poveži njihov MCP server.
+>
+> Javi kad povežeš, pa krećemo.
+
+Alat bira korisnik. Ako je neki već povezan, ne nudi povezivanje nego ga koristi.
+
+**2. Ako korisnik ne želi da povezuje ništa**, reci mu da mogu i vektorski dizajni koje nacrtaš
+sam: natpisi, simboli, linijski crteži, geometrija. Budi iskren da je to uži izbor od modela, ali
+je besplatan i uvek oštar za štampu. Takav dizajn crtaš kao SVG i pretvaraš u PNG pune
+rezolucije zone štampe, sa providnom pozadinom.
+
+### Više dizajna: pokaži pre nego što nastaviš
+
+Kad korisnik traži više dizajna, **ne pravi sve odjednom pa da ih vidi tek na kraju.** Pogrešan
+pravac se tako umnoži, a trošak generisanja je njegov.
+
+1. Napravi **prvi** dizajn, pokaži ga i pitaj da li je to pravac: stil, boje, nivo detalja.
+2. Posle potvrde pravi **jedan po jedan** i pokaži svaki čim nastane, uz kratku napomenu šta si
+   menjao. Korisnik tako može da zaustavi ili ispravi u hodu.
+3. Tek kada su dizajni prihvaćeni, pripremi ih za štampu i napravi proizvode u jednom poslu.
+
+Ako korisnik izričito kaže da ne želi da gleda usput („samo napravi svih dvanaest"), poštuj to,
+ali i tada prvo pokaži jedan.
 
 ### Kako tražiš sliku od modela
 
