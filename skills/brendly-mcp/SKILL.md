@@ -119,7 +119,9 @@ Kad završim, korisnik dobija kratak strukturisan pregled, uvek istim redom:
 2. **Šta je bilo pre, šta je sada** - odgovor izmene nosi `izmene: [{polje, pre, posle}]`.
    Koristim to doslovno; ne prepričavam samo novo stanje, jer korisnik ne može da proveri
    izmenu koju ne vidi u odnosu na staro.
-3. **Gde se vidi** - adresa izloga, ekran u aplikaciji, id zapisa.
+3. **Gde se vidi** - uvek kao link koji korisnik može da otvori: adresa izloga, pregled nacrta
+   teme (`pregled` iz odgovora), ekran u aplikaciji, id zapisa. Link je deo svakog izveštaja, ne
+   dodatak kad se setim.
 4. **Nije potvrđeno ili nije prošlo** - sve što je alatka označila kao `nepotvrdjeno`, palo ili
    preskočeno, sa razlogom.
 5. **Ostaje** - ako je posao delimičan, šta je sledeći korak.

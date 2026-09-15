@@ -155,6 +155,11 @@ gde tema ispisuje naslov i dugme, pa motive držim izvan tog pojasa.
 
 ## Provera
 
+**Pregled nacrta pre objave.** Svaka izmena nacrta vraća `pregled`: adresu izloga sa nacrtom,
+isto što otvara dugme „Pregledaj temu" u platformi (`<adresa izloga>?themeId=<id>&brendlyLibrary=false`).
+Posle svake izmene tu adresu dam korisniku, da pogleda kako izgleda pre nego što bilo šta ide
+uživo. Isto vraća i `brendly_themes_read action:"preview"`.
+
 Izlog kešira SSR stranicu, pa posle objave dodajem parametar (`/?v=2`) da ne gledam staro.
 
 Ako imam pregledač: snimim početnu na širokom i na 390 px. Tražim preklapanja, odsečen
