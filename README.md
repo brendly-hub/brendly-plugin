@@ -46,36 +46,56 @@ A svakodnevno, nad postojećim katalogom:
 | Deo | Šta radi |
 |---|---|
 | **Brendly server** | Veza sa tvojim Brendly nalogom preko `https://mcp.brendly.rs/mcp`. Daje Claude-u iste mogućnosti koje imaš u Brendly platformi. |
-| **Uputstva** | Četiri skupa znanja koje Claude sam koristi kad zatreba: rad sa platformom, katalog i proizvodi, izgled izloga, brojke i novac. Zahvaljujući njima zna kako se šta radi na Brendly-ju, bez objašnjavanja sa tvoje strane. |
+| **Uputstva** | Četiri skupa znanja koje Claude sam koristi kad zatreba: rad sa platformom, katalog i proizvodi, izgled izloga, brojke i novac. U Claude Code-u dolaze kao skillovi uz plugin, a u Claude aplikaciji ih server daje sam. Zahvaljujući njima Claude zna kako se šta radi na Brendly-ju, bez objašnjavanja sa tvoje strane. |
 
 ## Instalacija
 
-**Potrebno:** [Claude Code](https://claude.com/claude-code) i Brendly nalog.
+**Potrebno:** Claude nalog i Brendly nalog. Lozinka ostaje na Brendly platformi i nikad ne prolazi
+kroz Claude: pri prvom korišćenju otvara se Brendly stranica za odobravanje pristupa, prijaviš se
+kao i inače i klikneš **Dozvoli**.
 
-U Claude Code-u pokreni:
+Jedna prijava pokriva ceo nalog: sve tvoje prodavnice, na svim tržištima (Srbija, Hrvatska,
+Bosna i Hercegovina i EU), dostupne su odmah. Claude ih izlista i radi u onoj koju izabereš,
+isto kao što tržište menjaš u samoj platformi.
+
+### Claude aplikacija (Desktop ili claude.ai)
+
+Radi na svim nalozima, i na besplatnom.
+
+1. Otvori **Settings**, pa **Connectors**.
+2. Klikni **Add custom connector**.
+3. Ime: `Brendly`, adresa servera: `https://mcp.brendly.rs/mcp`.
+4. Klikni **Add**, pa **Connect** i odobri pristup na Brendly stranici.
+5. U novom razgovoru, preko dugmeta **+** pa **Connectors**, proveri da je Brendly uključen.
+
+Claude tada uputstva o tome kako Brendly radi učitava sa servera kad mu zatrebaju (alatka
+`brendly_uputstva`), pa ti ne treba ništa više. Na Team i Enterprise nalozima konektor dodaje
+administrator organizacije.
+
+### Claude Code (plugin)
+
+Claude Code je Claude koji radi na tvom računaru: kartica **Code** u Claude Desktop aplikaciji ili
+program za terminal ([claude.com/claude-code](https://claude.com/claude-code)). Deo je plaćenih
+naloga (Pro i Max). Plugin pored veze donosi i ista uputstva kao skillove, koje Claude učitava
+sam kad zatrebaju.
+
+U polje za poruku unesi, jednu po jednu:
 
 ```text
 /plugin marketplace add brendly-hub/brendly-plugin
 /plugin install brendly@brendly
 ```
 
-Pri prvom korišćenju Claude otvara pregledač sa Brendly stranicom za odobravanje pristupa.
-Prijaviš se na **app.brendly.rs** kao i inače i klikneš **Dozvoli**. Lozinka ostaje na Brendly
-platformi i nikad ne prolazi kroz Claude.
-
-Jedna prijava pokriva ceo nalog: sve tvoje prodavnice, na svim tržištima (Srbija, Hrvatska,
-Bosna i Hercegovina i EU), dostupne su odmah. Claude ih izlista i radi u onoj koju izabereš,
-isto kao što tržište menjaš u samoj platformi.
-
 <details>
-<summary>Samo server, bez uputstava</summary>
-
-Server može da se doda i sam. Radi, ali Claude tada manje zna o tome kako Brendly funkcioniše,
-pa češće pita i sporije dolazi do rešenja.
+<summary>Samo server, bez plugina</summary>
 
 ```text
 claude mcp add --transport http brendly https://mcp.brendly.rs/mcp
 ```
+
+Radi isto kao i konektor u aplikaciji. Pri prvom razgovoru Claude sam ponudi da uputstva
+instalira kao skillove na tvoj računar (jednom, uz tvoju potvrdu), pa dalje radi isto kao sa
+pluginom.
 
 </details>
 
@@ -88,6 +108,9 @@ Dobar početak je da Claude upozna tvoj nalog:
 „Da li mi je prodavnica spremna da prima porudžbine? Šta fali?"
 „Pokaži mi šta imam u katalogu i koji proizvodi nisu objavljeni."
 ```
+
+> **Pro savet:** kad god zapneš i nije ti jasno gde si i šta dalje, reci Claude-u baš tako:
+> „Zapeo sam, ne znam gde sam ni šta sledeće." On pogleda stanje i vodi te korak po korak.
 
 Posle svakog posla Claude ti kaže šta je uradio, šta je bilo pre a šta je sada, gde to možeš da
 vidiš i šta, ako išta, nije uspelo.
@@ -291,7 +314,10 @@ objašnjavaš dva puta.
 
 ## Ažuriranje i uklanjanje
 
-Nove verzije:
+U Claude aplikaciji nema šta da se ažurira: server je uvek najnoviji. Konektor uklanjaš u
+**Settings**, **Connectors**.
+
+U Claude Code-u nove verzije plugina:
 
 ```text
 /plugin marketplace update brendly
