@@ -45,6 +45,20 @@ Sve je čitanje, osim zahteva za isplatu. Porudžbine se ne menjaju kroz MCP.
 
 ## Popusti i kodovi
 
+Oblik tela pri kreiranju, isti kao u platformi:
+
+```
+discounts_write create   data: {name, label?, type: "PERCENT"|"FIXED", value, endDate, productIdList}
+promo_codes_write create data: {name, label?, type: "PERCENT"|"FIXED", appliesTo: "PRODUCTS"|"CART",
+                                value, timesToBeUsed, endDate, productIdList?}
+```
+
+- `type` je samo `PERCENT` ili `FIXED`; `value` je procenat ili iznos u valuti prodavnice.
+  Bez `type` backend vraća 500 „Name is null" iako je naziv poslat, pa se greška ne sme čitati
+  doslovno.
+- Popust traži bar jedan proizvod u `productIdList`. Kod sa `appliesTo: "CART"` važi na celu
+  korpu i ne prima proizvode; sa `PRODUCTS` lista je obavezna.
+- `timesToBeUsed` je najmanje 1. `name` promo koda je tekst koji kupac kuca na kasi.
 - Datumi su **UTC**, oblik `yyyy-MM-dd-HH-mm-ss`. Ponoć po Beogradu leti je `...-22-00-00`
   prethodnog dana.
 - `active` znači uključen, ne „važi danas"; to kaže `vaziSada` u listi.
