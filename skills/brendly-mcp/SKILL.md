@@ -171,6 +171,31 @@ vođenje, a ne da objašnjavaš sve iz početka. Tada:
 
 Bez stručnih izraza i bez nabrajanja svih mogućnosti: čovek koji je zapeo treba pravac, ne meni.
 
+## Nova prodavnica
+
+Tri stvari se biraju jednom i posle se ne menjaju, ni ovde ni u platformi: **tržište** (RS, HR,
+BA ili EU), **adresa izloga** (`loadName`, npr. `salata-majice` → salata-majice.shop.brendly.eu)
+i **podrazumevani jezik** (na njemu su tekstovi izloga, kategorija „Sve" i original svih opisa).
+Zato ih pitam korisnika jednim pitanjem pre poziva, uz predlog: za adresu oblik iz naziva, za
+jezik onaj koji platforma predlaže za tržište (RS `rs`, HR `hr`, BA `ba`, EU `en`). Ako prodaje
+kupcima na više jezika, dodatne jezike mogu da uključim odmah (`enabledLanguages`) ili kasnije
+kroz `set_languages`.
+
+```
+brendly_shop_write action:"create" data:{name, loadName, market, defaultLanguage, enabledLanguages?}
+```
+
+Odgovor nosi šta je stvarno nastalo i šta još fali:
+- **`kontakt`**: mejl i telefon prodavnice platforma uzima sa naloga. Korisniku kažem koji je
+  mejl upisan; ako to nije njegov mejl, radi se na tuđem nalogu, pa stanem i kažem mu to.
+- **`sledeciKoraci`**: isti spisak kao „Moj Brendly". Prvi je obično **model rada** (Marketplace
+  ili Platform). To je poslovna odluka korisnika, ne moja: objasnim razliku
+  (`list_platform_usage_modes`), pa upišem ono što izabere.
+- Nova prodavnica **nije izabrana** za sesiju. Dalje šaljem njen `shopId` u svaki poziv, a
+  korisniku kažem naziv i adresu da zna gde radimo.
+
+Opis, meta, logo i kontakt idu posle, kroz `update` i `set_image`.
+
 ## Da li je prodavnica spremna da prima porudžbine
 
 `brendly_shop_settings_read action:"verification_data"` vraća istu listu koju korisnik vidi u
