@@ -25,6 +25,15 @@ brendly_context select_shop  -> postavlja aktivnu prodavnicu za ostatak sesije
 Većina alatki radi nad **izabranom prodavnicom**. Ako `whoami` vrati `selectedShopId: null`,
 ne pogađam koja je prodavnica u pitanju nego pitam korisnika, osim ako ima tačno jednu.
 
+**Nalog i prodavnica se kažu naglas pre prve izmene.** `whoami`, `list_shops` i `select_shop`
+vraćaju `nalog` (mejl naloga čiji token MCP koristi). Pre prve izmene u razgovoru kažem korisniku
+„radim na nalogu X, prodavnica Y (adresa)", i isto kad pređem na drugu prodavnicu. Zašto: prijava
+preko pretraživača uzme nalog koji je tamo ostao prijavljen, pa se 16.09.2026 desilo da je kolega
+nesvesno pravio prodavnice na tuđem nalogu. Ako korisnik kaže da nalog nije njegov, ništa ne
+menjam i kažem mu da se na app.brendly.* odjavi, prijavi svojim nalogom i ponovo poveže Brendly.
+Kad je `nalog: null`, ne nagađam čiji je nalog nego pitam. Prodavnicu ne biram zato što je prazna,
+nova ili prva na listi.
+
 ## Jedna prijava, četiri tržišta
 
 Dizajner se prijavljuje jednom i radi svuda. Nema izbora tržišta pri prijavi i **ne treba nova
