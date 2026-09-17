@@ -80,6 +80,10 @@ Redosled biranja, od najboljeg:
 `app.brendly.*/mcp/upload`, otvori ga **prijavljen**, prevuče slike, pa se vrati. Tek tada
 zovem `upload_status` sa `sinceFileId` koji mi je `upload_link` vratio.
 
+U Claude aplikaciji bez alata za kod (ili kad alat nema mrežu) jedini pouzdan put za sliku koju
+je korisnik priložio u razgovor je `upload_link`: sliku iz razgovora ne mogu da pretvorim u bajtove
+sam, a base64 napisan napamet MCP odbija.
+
 Sva tri puta se završavaju **istim `fileAssetId`**, koji ide u `designs` pri kreiranju
 proizvoda. Bajtove ne provlačim kroz razgovor: 3600×4800 PNG kao base64 je oko 70.000 tokena.
 

@@ -40,6 +40,11 @@ backend izvodi sam iz tipa proizvoda - ne šaljem ih osim ako korisnik traži dr
   pa isti naziv na drugom tipu proizvoda prolazi kao nov proizvod.
 - Dizajn ide kao `imageUrl`, `imageBase64` ili `fileAssetId`. Kako sliku dovesti u galeriju:
   vidi odeljak o slikama u skillu `brendly-mcp`. `fileAssetId` je najjeftiniji put.
+- `imageBase64` ima smisla samo kad bajtove daje alat (kod pročita fajl ili ga napravi). Base64
+  napisan „iz glave" je uvek pokvaren: model ne može verno da prepiše bajtove, pa slika ispadne
+  skraćena ili izmišljena. MCP zato proveri da je to cela PNG, JPEG ili WEBP slika i odbije je pre
+  potvrde, sa razlogom. Kad stigne takvo odbijanje, ne pokušavam ponovo drugim base64 nizom ni
+  „probnom" slikom 1×1 u prodavnici korisnika, nego biram put iz tabele u `brendly-mcp`.
 
 Posle posla proverim rezultat: `action:"preview"` vrati mockup **kao sliku** u odgovoru
 (oko 1.500 tokena), pa vidim da li dizajn stoji kako treba.
