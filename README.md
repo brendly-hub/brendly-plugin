@@ -46,7 +46,7 @@ A svakodnevno, nad postojećim katalogom:
 | Deo | Šta radi |
 |---|---|
 | **Brendly server** | Veza sa tvojim Brendly nalogom preko `https://mcp.brendly.rs/mcp`. Daje Claude-u iste mogućnosti koje imaš u Brendly platformi. |
-| **Uputstva** | Četiri skupa znanja koje Claude sam koristi kad zatreba: rad sa platformom, katalog i proizvodi, izgled izloga, brojke i novac. U Claude Code-u dolaze kao skillovi uz plugin, a u Claude aplikaciji ih server daje sam. Zahvaljujući njima Claude zna kako se šta radi na Brendly-ju, bez objašnjavanja sa tvoje strane. |
+| **Uputstva** | Pet skupova znanja koje Claude sam koristi kad zatreba: povezivanje naloga, rad sa platformom, katalog i proizvodi, izgled izloga, brojke i novac. U Claude Code-u dolaze kao skillovi uz plugin, a u Claude aplikaciji ih server daje sam. Zahvaljujući njima Claude zna kako se šta radi na Brendly-ju, bez objašnjavanja sa tvoje strane. |
 
 ## Instalacija
 
@@ -341,3 +341,14 @@ ili mu reci da prebaci na drugu.
 **Šta ako Claude nešto pogrešno izmeni?**
 Veće izmene ne prolaze bez tvoje potvrde, a za svaku izmenu dobijaš staro i novo stanje. Tema
 se vraća iz snimka, a proizvodi i podešavanja se ispravljaju istim putem kojim su izmenjeni.
+
+**Koje podatke plugin čuva?**
+Razgovor sa Claude-om ne dolazi do nas i ne čuvamo ga. Čuvamo tvoju sesiju (šifrovane tokene),
+trag o tome koja je alatka pozvana i kako je prošla, i povratnu informaciju kad je sam pošalješ.
+Sve je opisano u [Politici privatnosti](PRIVACY.md).
+
+## Privatnost
+
+Šta plugin i server prikupljaju, zašto, koliko dugo to čuvaju i koja su tvoja prava piše u
+[Politici privatnosti](PRIVACY.md). Korišćenje same Brendly platforme pokriva
+[Politika privatnosti Brendly-ja](https://brendly.rs/pomoc/politika-privatnosti/).

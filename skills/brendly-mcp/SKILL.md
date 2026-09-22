@@ -43,7 +43,7 @@ prijava za drugo tržište**.
   Tržište koje ne odgovori ne obara poziv nego se javi u `nedostupnaTrzista`.
 - `select_shop` uz prodavnicu pamti i njeno tržište, pa se svi sledeći pozivi sami rutiraju.
 - EU je submarket HR instance. U listi se vidi kao svoje tržište.
-- `brendly_catalog` i `brendly_request` primaju `market` izričito, kad treba pročitati drugo
+- `brendly_catalog` i `brendly_request_read` primaju `market` izričito, kad treba pročitati drugo
   tržište od izabranog.
 
 Valuta, PDV i URL-ovi po tržištu: `brendly_markets`.
