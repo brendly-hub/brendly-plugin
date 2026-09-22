@@ -120,7 +120,13 @@ Pročitaj zonu štampe iz `brendly_catalog product_type` (`referentnaZonaMm` i
 3. **Ukloni pozadinu** ako slika nema providnost. Puna bela pozadina se na tamnoj majici odštampa
    kao beli pravougaonik.
 4. **Očisti ivice**: bela aura oko motiva, jedva vidljivi pikseli, prazne margine.
-5. **Proveri ponovo** veličinu i providnost, pa tek onda ubaci u galeriju.
+5. **Ne šalji više piksela nego što štampa koristi.** Na 300 DPI zona majice (282x376 mm) traži
+   3.331x4.441 px, a najveća zona na odeći, hoodica (315x420 mm), 3.720x4.961 px. Sve preko toga
+   se pri štampi svakako smanji, a poskupljuje svaki render. Takav dizajn je obično oko 1 MB, a
+   i sa puno detalja ispod 10 MB; **ako fajl pređe 10 MB, to je znak da je slika iznad 300 DPI ili
+   da je fotografija sačuvana kao PNG** (za fotografiju bez providnosti koristi JPG, višestruko je
+   manji). Tvrda granica rendera je 50 MB i 200 MP, preko toga posao odmah pada.
+6. **Proveri ponovo** veličinu i providnost, pa tek onda ubaci u galeriju.
 
 Korisniku javi samo ishod, jednom rečenicom („dizajn je uvećan i uklonjena mu je pozadina").
 Pitaj ga samo kada priprema nije moguća: na primer kada povezani alat nema uvećanje, a slika je
@@ -202,6 +208,26 @@ vidi u prodavnici bira se ovde.
 `brendly_categories_read` (listanje, proizvodi u kategoriji) i `brendly_categories_write`
 (kreiranje, izmena, brisanje i dodela proizvoda). Kategorija se
 u temi vezuje **slugom**, ne id-em - to je važno ako se odmah posle sređuje izlog.
+
+## Gde ide dizajn na proizvodu
+
+Otisak se odlučuje po redu, prvi uslov koji važi pobeđuje:
+
+1. **„napravi isto kao na proizvodu X"** - pročitam X kroz `products_read get` i pošaljem
+   `geometry`, ne `placement`. Detalji u `reference/prenos-dizajna.md`.
+2. **korisnik je rekao gde** („na srce", „uz dno", „malo niže") - šaljem taj raspored:
+   `chest-heart`, `chest-right`, `fit-bottom`, `fit-top`.
+3. **korisnik je samo rekao da napravi proizvod sa dizajnom** - ne šaljem ništa.
+   Podrazumevano je `fit-top`: najveći otisak koji staje, poravnat uz gornju ivicu zone.
+   To je isto što prodavac u editoru dobije sa dva klika, „uklopi u okvir" pa „poravnaj uz
+   vrh", i to je ono što većina njih i uradi.
+4. **korisnik je zadao tačnu veličinu ili položaj** - poštujem ga doslovno.
+
+Centrirani `fit` šaljem samo kad neko izričito traži dizajn na sredini: otisak tada visi na
+sredini grudi i izgleda kao greška.
+
+Posle posla pročitam proizvod i uporedim otisak sa traženim. Ako je Java smanjila otisak da
+stane u okvir, kažem koliko.
 
 ## Isti dizajn na drugom tipu proizvoda
 
