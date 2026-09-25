@@ -98,8 +98,8 @@ proizvoda. Bajtove ne provlačim kroz razgovor: 3600×4800 PNG kao base64 je oko
 
 ## Semantika koju model ne može da pogodi
 
-- **Zalihe:** stvarna raspoloživost je `inventory.amount - 100`. Vrednost 100 ili manje znači
-  nula komada. `brendly_catalog` to već računa u polju `raspolozivo`.
+- **Zalihe:** `brendly_catalog` vraća stanje po artiklu (ide odmah, radi se po porudžbini,
+  koliko se čeka), bez broja komada. Količinu ne tražim drugim putem i ne procenjujem je.
 - **Višejezična polja** (naziv, opis, meta): pre izmene pročitaj zapis sa
   `includeTranslations: true`, inače upis pregazi prevode na drugom jeziku.
 - **Liste** koriste `page`/`size`/`sortBy`/`sortOrder`, a filteri su tipizovani po alatki

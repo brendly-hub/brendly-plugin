@@ -1,0 +1,20 @@
+Copyright (c) 2026 Brendly. All rights reserved.
+
+Proprietary license.
+
+This plugin (its manifests, skills and documentation) is provided so that users of the
+Brendly platform (app.brendly.rs, app.brendly.hr, app.brendly.ba, app.brendly.eu) can use
+it with Claude. You may install and use it for that purpose.
+
+You may not copy, modify, redistribute, sublicense or sell the plugin or any part of it,
+except as needed to install and use it, without prior written permission from Brendly.
+
+Use of the Brendly platform and the Brendly MCP server (https://mcp.brendly.rs) is governed
+by the Brendly terms of service and privacy policy:
+https://github.com/brendly-hub/brendly-plugin/blob/main/PRIVACY.md
+
+THE PLUGIN IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT
+SHALL BRENDLY BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM THE USE OF THE
+PLUGIN.
+
+Contact: filip.nedovic@brendly.rs

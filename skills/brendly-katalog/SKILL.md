@@ -233,6 +233,6 @@ pragovima i zamkama, je u `reference/prenos-dizajna.md`; pročitaj ga pre nego �
 
 ## Zalihe
 
-`brendly_catalog` vraća polje `raspolozivo` = `inventory.amount - 100`. Vrednost `amount`
-manja ili jednaka 100 znači **nula komada**, ne malo komada. Nikad ne izveštavam sirov
-`amount` korisniku.
+`brendly_catalog` vraća **stanje** po artiklu (boja i veličina), ne broj komada: da li ide
+odmah, da li se radi po porudžbini i koliko se čeka. Koliko komada držimo nije podatak za
+prodavca, pa ga ne tražim drugim putem niti ga procenjujem iz nečeg drugog.
